@@ -1,0 +1,6 @@
+echo "# collision-detection" > README.md
+git init
+git add -A
+git commit
+git remote add origin https://github.com/Society-5/collision-detection.git
+git push -u origin master

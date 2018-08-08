@@ -16,7 +16,17 @@ void showVectorVals(string label, vector<double> &v)
 	cout << label << " ";
 	for(unsigned i = 0; i < v.size(); ++i)
 	{
-		cout << v[i] << " ";
+		cout << (double)v[i] << " ";
+	}
+	cout << endl;
+}
+
+void showVectorValsInt(string label, vector<double> &v)
+{
+	cout << label << " ";
+	for(unsigned i = 0; i < v.size(); ++i)
+	{
+		cout << (unsigned)v[i] << " ";
 	}
 	cout << endl;
 }
@@ -38,12 +48,16 @@ int main ()
 	while(!trainData.isEof ())
 	{
 		++trainingPass;
-		cout << endl << "Pass" << trainingPass;
-
+		cout << endl << "Pass" << trainingPass << ":" << endl;
+		trainData.getNextInputs (inputVals); 
+		cout << inputVals.size () << ": ";
+		for (auto& x : inputVals)
+			cout << x << " ";
+		cout << endl;
 		// Get new input data and feed it forward:
-		if(trainData.getNextInputs (inputVals) != topology [0])
+		if(inputVals.size () != topology [0])
 			break;
-		showVectorVals (": Inputs :", inputVals);
+		showVectorValsInt (": Inputs :", inputVals);
 		myNet.feedForward (inputVals);
 
 		// Collect the net's actual results:

@@ -62,7 +62,7 @@ unsigned TrainingData::getNextInputs(vector<double> &inputVals)
     string label;
     ss >> label;
     if (label.compare("in:") == 0) {
-        double oneValue;
+        unsigned oneValue;
         while (ss >> oneValue) {
             inputVals.push_back(oneValue);
         }
